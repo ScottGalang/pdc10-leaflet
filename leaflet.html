@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Top 10 Places</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+</head>
+<style>
+#map {width: 1600px; height: 700px}
+</style>
+<body>
+<div id="map"></div>
+</body>
+<script>
+var map_center = [10.3392, 123.8537];
+var mapOptions = {
+  center: map_center,
+  zoom: 5.5
+}
+var map = L.map('map', mapOptions);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 12,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// Places
+aurora_latlong = [15.7873, 121.5627];
+aurora_marker = L.marker(aurora_latlong).addTo(map);
+
+laoag_latlong = [18.1933, 120.6046];
+laoag_circle = L.circle(laoag_latlong, {radius: 10000, color: 'red'}).addTo(map);
+
+baguio_latlong = [16.4111, 120.5962];
+baguio_marker = L.marker(baguio_latlong).addTo(map);
+
+rizal_latlong = [14.5617,121.2698];
+rizal_circle = L.circle(rizal_latlong, {radius: 15000, color: 'pink'}).addTo(map);
+
+laguna_latlong = [14.2627, 121.4759];
+laguna_marker = L.marker(laguna_latlong).addTo(map);
+
+var polyline_latlngs = [
+    [[8.2627, 126.2053],
+     [8.2233, 125.8455],
+     [7.9909, 125.8731],
+     [7.9790, 126.2154],
+     [7.7596, 126.2322],
+     [7.7433, 125.7087]
+    ],
+    [[40.78, -73.91],
+     [41.83, -87.62],
+     [32.76, -96.72]]
+];
+polyline = L.polyline(polyline_latlngs, {color: 'red'}).addTo(map);
+
+</script>
+</html>
